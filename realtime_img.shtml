@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	  <title>GSS6450 RPS</title>
+	  <link rel="stylesheet" type="text/css" href="../style.css">
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <meta content="D.Belton" name="author">
+	  <meta content="GSS6450 RPS Control Panel"  name="GSS6450 Control Panel">
+	  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+		<script src="data_handler.js"></script>
+		<style>
+		td.example {
+	width: 400px;
+	height: 300px;
+		}
+		td{
+	font-size:16px;
+		}
+		table.graphs{
+			margin: 0 auto;
+			}
+			p.desc {
+		font-size: 16px;
+			}
+			input.radio {
+		display: inline;
+			}</style>
+	</head>
+	<body   style="background-color:#ECF0F1;" onload="setCtrls()">
+<div class="container">
+<br>
+<div class="titleblock">
+
+<br>
+
+</div>
+<div>
+<br>
+<ul class="navbar">
+  <li><a href="index.html" class="style5 nav">Home</a></li>
+  <li><a href="config.shtml" class="style5 nav style1">Config</a></li>
+  <li><a href="/elfinder/elfinder.shtml" class="style5 nav style1">Manage Files</a></li>
+  <li><a href="play.shtml" class="style5 nav style1">Play</a></li>
+  <li><a href="rec.shtml" class="style5 nav style1">Record</a></li>
+  <li><a href="batch_config.shtml" class="style5 nav style1">Batch</a></li>
+  <li><a href="shutdown.shtml" class="style5 nav style1">Shutdown</a></li>
+  <li><a href="help.shtml" class="style5 nav">Help</a></li>
+</ul>
+</div>
+<div class="content">
+	<table class="graphs">
+		<tr>
+<th><h3>Spectrum</h3></td>
+<th><h3>Histogram</h3></td>
+</tr>
+		<tr>
+<td id="fft-div" class="example"><img id="fft-div-img"></img></td>
+<td id="histo-div" class="example"><img id="histo-div-img"></img></td>
+</tr>
+
+<tr>
+<td>
+	<p class="desc"><b>Averages for Spectrum: </b></p>
+<select onchange="submitCtrl(this)" id="comboSpec">
+<option value="1">1</option>	
+<option value="8">8</option>
+<option value="16">16</option>	
+<option value="32">32</option>
+</select>
+<p class="desc"><b>FFT Points: </b></p>
+<select onchange="submitCtrl(this)" id="comboFFTPoints">
+<option value="32768">32768</option>	
+<option value="16384">16384</option>
+<option value="8192">8192</option>	
+<option value="4096">4096</option>
+<option value="2048">2048</option>
+<option value="1024">1024</option>
+<option value="512">512</option>
+</select>
+</td>
+<td><p class="desc"><b>Averages for Histogram: </b></p>
+<select onchange="submitCtrl(this)" id="comboHisto">
+<option value="1">1</option>	
+<option value="8">8</option>
+<option value="16">16</option>	
+<option value="32">32</option>
+</select>
+</td> </td>
+</tr>
+
+<tr><td colspan="2" id="chanSel"><p class="desc"><b>Channel Selection: </b></p>
+<input type="radio" onclick="submitCtrl(this)" name="chanSel" value="1" class="radio" checked>Channel 1  </br>  
+<input type="radio" onclick="submitCtrl(this)" name="chanSel" value="2" class="radio">Channel 2    </br>
+<input type="radio" onclick="submitCtrl(this)" name="chanSel" value="3" class="radio">Channel 3    </br>
+<input type="radio" onclick="submitCtrl(this)" name="chanSel" value="4" class="radio">Channel 4 </br>
+</td></tr>
+<tr><td colspan="2"><p id="info" class="desc"></p></td></tr></table>
+<script>loadRawData();loadInfo();
+</script>
+<br>
+<!--#include file="footer.html" -->
