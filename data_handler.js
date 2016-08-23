@@ -183,6 +183,11 @@ function submitCtrl(object)
 		type = "-c";
 		value = object.value -1;
 	}
+	else if (object.id==="comboFFTPoints")
+	{
+		type = "-p";
+		value = String(object.selectedIndex);
+	}
 	if (window.XMLHttpRequest)
 	{// code for all new browsers
 		xmlhttp=new XMLHttpRequest();
